@@ -5,80 +5,101 @@
         unset($_SESSION['autenticado']);
     }
 
-    require_once('./classeConexao.php');
+    require_once('classeConexao.php');
     if(isset($_POST) && $_POST!=NULL){
         $con = new Conexao();
         $dados['email'] = $_POST['email'];
         $dados['senha'] = md5($_POST['senha']);
-
-        $sql = "SELECT email, privilegio FROM corret WHERE email=:email AND senha=:senha";
+        $sql = "SELECT email FROM corret WHERE email=:email AND senha=:senha";
         $registro = $con->getRegistro($sql, $dados);
-        //print_r($registro); exit();
-        if($registro == NULL) echo "E-mail ou senha incorretos";
+        if($registro == NULL);
         else{
           $_SESSION['autenticado']=$registro['email'];
-          $_SESSION['privilegio']=$registro['privilegio'];
           header('location: index.php');
         }
     }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="https://getbootstrap.com/docs/3.3/favicon.ico">
 
+<head>
 
-    <title>Login no Estudo de Caso</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <!-- Bootstrap core CSS -->
-    <!-- <link href="bootstrap.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>Idealizar Imóveis</title>
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="assets/css/style.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <!-- <script src="../../assets/js/ie-emulation-modes-warning.js"></script> -->
+</head>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+<body class="bg-gradient-primary">
 
-  <body>
+  <div class="container">
 
-    <div class="container">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
 
-      <form class="form-signin" action="login.php" method="POST">
-        <h2 class="form-signin-heading">Por Favor, informe seus dados</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="senha" id="inputPassword" class="form-control" placeholder="Password" required>
-        <!-- <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div> -->
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-      </form>
+      <div class="col-xl-10 col-lg-12 col-md-9">
 
-    </div> <!-- /container -->
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-3 d-lg-block"><img src="capa.png" width=1000 height=500>
+              </div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                <form class="form-signin" action="login.php" method="POST">
+                    <div class="form-group">
+                      <input type="email" name="email" class="form-control form-control-user" id="inputEmail" aria-describedby="email" placeholder="Informe seu e-mail" required autofocus>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control form-control-user" id="inputPassword" placeholder="Informe sua senha" name="senha">
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox strong">
+                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                        <label class="custom-control-label" for="customCheck">Lembrar</label>
+                      </div>
+                    </div>
+                     <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                    <hr>
+                  </form>
+                  <hr>
+                  <div class="text-center">
+                    <a class="strong" href="senha_perdida.php">Esqueceu sua senha?</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
+      </div>
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
-  </body>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+</body>
+
 </html>
