@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 06-Maio-2019 às 23:11
+-- Generation Time: 17-Jun-2019 às 01:37
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 5.6.40
 
@@ -44,7 +44,7 @@ CREATE TABLE `corret` (
 --
 
 INSERT INTO `corret` (`id`, `email`, `senha`, `nome`, `telefone`, `cidade`, `creci`, `privilegio`) VALUES
-(2, 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Daniel', '345', '345', 'asd', 0),
+(2, 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'Daniel', '345', '345', '123123', 0),
 (3, 'corretor@gmail.com', '202cb962ac59075b964b07152d234b70', 'Corretor', '54 9 99999999', 'Passo Fundo', '12345', 1);
 
 -- --------------------------------------------------------
@@ -70,7 +70,9 @@ CREATE TABLE `pessoa` (
 --
 
 INSERT INTO `pessoa` (`id`, `nome`, `idade`, `telefone`, `interesse`, `obs`, `valor`, `cidade`, `cpf`) VALUES
-(3, 'Daniel De Marchi', 24, '54996967294', 'Casa 3 dormitÃ³rios', 'Sem ObservaÃ§Ãµes', 500000, 'Passo Fundo', '838.959.140.53');
+(6, 'Joao', 33, '(54) 94545-5154', 'Casa', 'nada', 150, 'Passo Fundo', NULL),
+(7, 'Teste', 34, '(34) 53453-4534', 'Casa', '3', 150, 'Passo Fundo', NULL),
+(8, 'Daniel', 24, '(54) 99666-5555', 'Casa', 'Nadaaa', 300, 'Passo Fundo', NULL);
 
 --
 -- Indexes for dumped tables
@@ -96,13 +98,13 @@ ALTER TABLE `pessoa`
 -- AUTO_INCREMENT for table `corret`
 --
 ALTER TABLE `corret`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
